@@ -3,7 +3,6 @@ package com.techelevator;
 import com.techelevator.change.Change;
 import com.techelevator.view.Menu;
 
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
@@ -11,8 +10,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class VendingMachineCLI {
-    private VendingMachine vendingMachine = new VendingMachine();
-    private Logger logger = new Logger();
+    private final VendingMachine vendingMachine = new VendingMachine();
+    private final Logger logger = new Logger();
 
     private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -27,8 +26,8 @@ public class VendingMachineCLI {
     private static final String[] PURCHASE_MENU_OPTIONS = {PURCHASE_MENU_FEED_MONEY, PURCHASE_MENU_SELECT_PRODUCT,
             PURCHASE_MENU_FINISH_TRANSACTION};
 
-    private Menu menu;
-    private Scanner in = new Scanner(System.in);
+    private final Menu menu;
+    private final Scanner in = new Scanner(System.in);
 
     private VendingMachineCLI(Menu menu) {
         this.menu = menu;
@@ -107,7 +106,6 @@ public class VendingMachineCLI {
         boolean containsKey = itemsInTheMachine.containsKey(input);
         if (containsKey || input.equals("X")) {
             if (input.equals("X")) {
-                return;
             } else if (containsKey) {
                 boolean outOfStock = itemsInTheMachine.get(input).isEmpty();
                 if (outOfStock) {

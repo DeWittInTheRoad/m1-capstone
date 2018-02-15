@@ -2,7 +2,7 @@ package com.techelevator;
 
 import java.math.BigDecimal;
 
-abstract public class Item {
+public abstract class Item {
     protected String name;
     protected BigDecimal price;
     protected String consumedMessage;
@@ -14,7 +14,7 @@ abstract public class Item {
     }
 
 
-    abstract public String getConsumedMessage();
+    public abstract String getConsumedMessage();
 
 
     public String getName() {

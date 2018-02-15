@@ -6,8 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Logger {
 
@@ -18,7 +20,10 @@ public class Logger {
     }
 
     public void logFeed(BigDecimal amountFed, BigDecimal endingBalance){
-        outputToFile("FEED MONEY $"+ amountFed.setScale(2), endingBalance);
+        NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
+        String amountFedString = n.format(amountFed.doubleValue());
+
+        outputToFile("FEED MONEY $"+ amountFedString, endingBalance);
 
     }
 
@@ -27,7 +32,7 @@ public class Logger {
 
     }
 
-    public void outputToFile(String action, BigDecimal startingBalance, BigDecimal endingBalance){
+    private void outputToFile(String action, BigDecimal startingBalance, BigDecimal endingBalance){
         File outputFile = new File("Log.txt");
 
         StringBuilder entry = new StringBuilder();
@@ -41,6 +46,12 @@ public class Logger {
         entry.append(endingBalance);
 
 
+        printToFile(outputFile, entry);
+
+
+    }
+
+    private void printToFile(File outputFile, StringBuilder entry) {
         try (FileOutputStream f = new FileOutputStream(outputFile, true);
              PrintWriter pw = new PrintWriter(f)) {
 
@@ -51,10 +62,9 @@ public class Logger {
             System.out.println(e.toString());
             System.out.println("Could not find file");
         }
-
-
     }
-    public void outputToFile(String action, BigDecimal endingBalance){
+
+    private void outputToFile(String action, BigDecimal endingBalance){
         File outputFile = new File("Log.txt");
         StringBuilder entry = new StringBuilder();
 
@@ -65,16 +75,7 @@ public class Logger {
         entry.append(" $");
         entry.append(endingBalance);
 
-        try (FileOutputStream f = new FileOutputStream(outputFile, true);
-             PrintWriter pw = new PrintWriter(f)) {
-
-            pw.println(entry);
-            pw.flush();
-            }
-        catch(IOException e){
-            System.out.println(e.toString());
-            System.out.println("Could not find file");
-        }
+        printToFile(outputFile, entry);
 
 
     }

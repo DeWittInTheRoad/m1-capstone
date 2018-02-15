@@ -7,13 +7,13 @@ import java.io.File;
 
 public class VendingMachine {
 
-    LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
+    private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
     private BigDecimal balance = new BigDecimal(0);
     private String[] csvItems;
 
 
     public BigDecimal getBalance() {
-        return this.balance.setScale(2);
+        return balance.setScale(2);
     }
 
     public void buyItem(String slot) {
@@ -66,20 +66,20 @@ public class VendingMachine {
     }
 
 
-    public void readCSVFile() throws FileNotFoundException {
-        String line = "";
+    private void readCSVFile() throws FileNotFoundException {
+        StringBuilder line = new StringBuilder();
         File inputFile = new File("vendingmachine.csv");
 
         try (Scanner in = new Scanner(inputFile)) {
             while (in.hasNextLine()) {
-                line += in.nextLine() + "\n";
+                line.append(in.nextLine()).append("\n");
             }
         }
-        csvItems = line.split("[\n]");
+        csvItems = line.toString().split("[\n]");
 
     }
 
-    public void createMap() {
+    private void createMap() {
 
         for (String line : csvItems) {
 
@@ -105,7 +105,7 @@ public class VendingMachine {
         }
     }
 
-    public void itemLoader(List<Item> itemList, String slot, Item item) {
+    private void itemLoader(List<Item> itemList, String slot, Item item) {
         for (int i = 0; i < 5; i++) {
             itemList.add(item);
             itemsInTheMachine.put(slot, itemList);
