@@ -7,8 +7,8 @@ import java.io.File;
 
 public class Importer {
 
-    public LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
-    public String[] csvItems;
+    private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
+    private String[] csvItems;
 
 
 
@@ -57,7 +57,7 @@ public class Importer {
         }
     }
 
-    public void itemLoader(List<Item> itemList, String slot, Item item) {
+    private void itemLoader(List<Item> itemList, String slot, Item item) {
         for (int i = 0; i < 5; i++) {
             itemList.add(item);
             itemsInTheMachine.put(slot, itemList);

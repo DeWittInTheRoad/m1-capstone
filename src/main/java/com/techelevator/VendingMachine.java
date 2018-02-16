@@ -1,17 +1,15 @@
 package com.techelevator;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.*;
-import java.io.File;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class VendingMachine {
 
-    private LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
+    private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
     private BigDecimal balance = new BigDecimal(0);
-    private String[] csvItems;
-
 
 
     public BigDecimal getBalance() {
