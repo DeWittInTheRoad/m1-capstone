@@ -10,27 +10,29 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class VendingMachineCLI {
-    private final VendingMachine vendingMachine = new VendingMachine();
-    private final Logger logger = new Logger();
-
     private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
     private static final String MAIN_MENU_OPTION_EXIT = "Exit";
-
     private static final String PURCHASE_MENU_FEED_MONEY = "Feed Money";
     private static final String PURCHASE_MENU_SELECT_PRODUCT = "Select Product";
     private static final String PURCHASE_MENU_FINISH_TRANSACTION = "Finish Transaction";
-
     private static final String[] MAIN_MENU_OPTIONS = {MAIN_MENU_OPTION_DISPLAY_ITEMS,
             MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT};
     private static final String[] PURCHASE_MENU_OPTIONS = {PURCHASE_MENU_FEED_MONEY, PURCHASE_MENU_SELECT_PRODUCT,
             PURCHASE_MENU_FINISH_TRANSACTION};
-
+    private final VendingMachine vendingMachine = new VendingMachine();
+    private final Logger logger = new Logger();
     private final Menu menu;
     private final Scanner in = new Scanner(System.in);
 
     private VendingMachineCLI(Menu menu) {
         this.menu = menu;
+    }
+
+    public static void main(String[] args) throws IOException {
+        Menu menu = new Menu(System.in, System.out);
+        VendingMachineCLI cli = new VendingMachineCLI(menu);
+        cli.run();
     }
 
     private void run() throws IOException {
@@ -65,8 +67,7 @@ public class VendingMachineCLI {
                                 } else {
                                     System.out.println("Not a valid form of currency.");
                                 }
-                            }
-                            else {
+                            } else {
                                 System.out.println("Not a valid form of currency.");
                             }
 
@@ -99,7 +100,7 @@ public class VendingMachineCLI {
         }
     }
 
-    private void purchaseMenu(){
+    private void purchaseMenu() {
         String input = in.nextLine().toUpperCase();
 
         Map<String, List<Item>> itemsInTheMachine = vendingMachine.getItemsInTheMachine();
@@ -119,13 +120,6 @@ public class VendingMachineCLI {
         } else {
             System.out.println("Not a valid slot.");
         }
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        Menu menu = new Menu(System.in, System.out);
-        VendingMachineCLI cli = new VendingMachineCLI(menu);
-        cli.run();
     }
 
 

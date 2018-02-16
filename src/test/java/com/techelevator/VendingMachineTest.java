@@ -5,16 +5,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
 
 public class VendingMachineTest {
 
     private VendingMachine vendingMachine;
 
     @Before
-    public void setup() throws FileNotFoundException{
+    public void setup() throws IOException{
         vendingMachine = new VendingMachine();
         vendingMachine.loadInventory();
     }
@@ -72,7 +72,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void buyItem() throws FileNotFoundException{
+    public void buyItem() throws IOException {
         vendingMachine.loadInventory();
         vendingMachine.feedMoney(BigDecimal.valueOf(10));
         String slot = "A1";
@@ -82,7 +82,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void buy_sold_out() throws FileNotFoundException{
+    public void buy_sold_out() throws IOException {
         vendingMachine.loadInventory();
         vendingMachine.feedMoney(BigDecimal.valueOf(100));
         String slot = "A1";
