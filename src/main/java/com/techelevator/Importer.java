@@ -1,6 +1,7 @@
 package com.techelevator;
 
-import java.io.FileNotFoundException;
+import com.techelevator.items.*;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 import java.io.File;
@@ -17,7 +18,7 @@ public class Importer {
     }
 
 
-    public void readCSVFile() throws FileNotFoundException {
+    public void readCSVFile(){
         StringBuilder line = new StringBuilder();
         File inputFile = new File("vendingmachine.csv");
 
@@ -25,6 +26,11 @@ public class Importer {
             while (in.hasNextLine()) {
                 line.append(in.nextLine()).append("\n");
             }
+
+        }
+        catch(IOException e){
+            System.out.println(e.toString());
+            System.out.println("Could not " + inputFile + " file");
         }
         csvItems = line.toString().split("[\n]");
 
@@ -65,7 +71,7 @@ public class Importer {
 
 
 
-    public void loadInventory() throws FileNotFoundException {
+    public void loadInventory(){
         readCSVFile();
         createMap();
     }

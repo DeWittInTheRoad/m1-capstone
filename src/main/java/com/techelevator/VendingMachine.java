@@ -1,22 +1,23 @@
 package com.techelevator;
 
 import com.techelevator.change.Change;
+import com.techelevator.items.Item;
 
-import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class VendingMachine {
 
     private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
+    private final Logger logger = new Logger();
     private BigDecimal balance = new BigDecimal(0);
-    Logger logger = new Logger();
-
 
     public BigDecimal getBalance() {
-        return balance.setScale(2);
+        return balance;
     }
 
     public void buyItem(String slot) {
@@ -29,10 +30,12 @@ public class VendingMachine {
                 System.out.println("Please Insert More Money.");
 
             else {
-
-                System.out.println("\n" + item.getConsumedMessage() + "\n");
-                logger.logPurchase(slot, item, getBalance());
+                System.out.println("\nConsuming " + item.getName() + "..." + "\n" + item.getConsumedMessage() + "\n");
+                BigDecimal startingBalance = balance;
                 balance = balance.subtract(item.getPrice());
+
+                logger.logPurchase(slot, item, startingBalance, balance);
+
                 itemListStockCount.remove(0);
             }
         }
@@ -45,7 +48,7 @@ public class VendingMachine {
     public void feedMoney(BigDecimal money) {
         balance = balance.add(money);
         System.out.println("Inserted $" + money.toString() + " dollars.");
-        logger.logFeed(money, getBalance());
+        logger.logFeed(money, balance);
 
     }
 
@@ -59,6 +62,7 @@ public class VendingMachine {
                 String itemName = entry.getValue().get(0).getName();
                 String itemPrice = "$" + entry.getValue().get(0).getPrice().toString();
                 String itemCount = String.valueOf(entry.getValue().size());
+
                 System.out.println(String.format("%-5s%-19s%10s%10s", itemSlot, itemName, itemPrice, itemCount));
             } else {
                 String itemSlot = entry.getKey();
@@ -77,20 +81,29 @@ public class VendingMachine {
     }
 
 
-    public void loadInventory() throws IOException{
+    public void loadInventory() {
         Importer importer = new Importer();
         importer.loadInventory();
         itemsInTheMachine.putAll(importer.getItemsInTheMachine());
     }
 
-    public void returnChange(){
-        Change change = new Change();
-        BigDecimal changeGiven = getBalance();
+    public void returnChange() {
+        if (balance.doubleValue() > 0) {
+            Change change = new Change();
+            BigDecimal changeGiven = getBalance();
 
-        System.out.println("\n"+change.makeChange(getBalance()));
+            System.out.println("\n" + change.makeChange(getBalance()));
 
-        resetBalance();
-        logger.logChange(changeGiven, getBalance());
+            resetBalance();
+            logger.logChange(changeGiven, getBalance());
+        } else {
+            logger.logChange(getBalance(), getBalance()); //Still log 0.00, 0.00
+        }
+    }
+
+    public String formatedBalanceToCurrency() {
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
+        return numberFormat.format(balance.doubleValue());
     }
 
 }

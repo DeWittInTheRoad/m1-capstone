@@ -1,9 +1,9 @@
-package com.techelevator;
+package com.techelevator.items;
 
 import java.math.BigDecimal;
 
-public class Chips extends Item {
-    public Chips(String name, BigDecimal price) {
+public class Gum extends Item {
+    public Gum(String name, BigDecimal price) {
         super(name, price);
     }
 
@@ -15,7 +15,6 @@ public class Chips extends Item {
 
     @Override
     public String getConsumedMessage() {
-        return "Crunch Crunch, Yum!";
+        return "Chew Chew, Yum!";
     }
 }
-

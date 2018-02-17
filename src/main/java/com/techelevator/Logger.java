@@ -1,7 +1,8 @@
 package com.techelevator;
 
-import java.io.File;
+import com.techelevator.items.Item;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,71 +13,48 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Logger {
+    private final File outputFile = new File("Log.txt");
 
-    public void logPurchase(String slot, Item item, BigDecimal startingBalance){
-        BigDecimal endingBalance = startingBalance.subtract(item.getPrice());
-        String event = item.getName() + "  " + slot;
-        outputToFile(event, startingBalance, endingBalance);
+    public void logPurchase(String slot, Item item, BigDecimal startingBalance, BigDecimal endingBalance) {
+        String event = item.getName() + " " + slot;
+        String entry = buildLogEntryString(event, startingBalance, endingBalance);
+
+        printToFile(entry);
     }
 
-    public void logFeed(BigDecimal amountFed, BigDecimal endingBalance){
-        NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
-        String amountFedString = n.format(amountFed.doubleValue());
+    public void logFeed(BigDecimal amountFed, BigDecimal endingBalance) {
+        String event = "FEED MONEY";
+        String entry = buildLogEntryString(event, amountFed, endingBalance);
 
-        outputToFile("FEED MONEY $"+ amountFedString, endingBalance);
-
+        printToFile(entry);
     }
 
-    public void logChange(BigDecimal changeGiven, BigDecimal endingBalance){
-        outputToFile("GIVE CHANGE $"+changeGiven, endingBalance);
+    public void logChange(BigDecimal changeGiven, BigDecimal endingBalance) {
+        String event = "GIVE CHANGE";
+        String entry = buildLogEntryString(event, changeGiven, endingBalance);
 
+        printToFile(entry);
     }
 
-    private void outputToFile(String action, BigDecimal startingBalance, BigDecimal endingBalance){
-        File outputFile = new File("Log.txt");
+    private String buildLogEntryString(String event, BigDecimal startingBalance, BigDecimal endingBalance) {
+        String date = (new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new Date()));
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
+        String startingBalanceString = (numberFormat.format(startingBalance.doubleValue()));
+        String endingBalanceString = (numberFormat.format(endingBalance.doubleValue()));
 
-        StringBuilder entry = new StringBuilder();
-
-        entry.append(new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new Date()));
-        entry.append(" ");
-        entry.append(action);
-        entry.append(" $");
-        entry.append(startingBalance);
-        entry.append(" $");
-        entry.append(endingBalance);
-
-
-        printToFile(outputFile, entry);
-
-
+        return String.format("%-25s%-25s%-10s%-10s", date, event, startingBalanceString, endingBalanceString);
     }
 
-    private void printToFile(File outputFile, StringBuilder entry) {
+
+    private void printToFile(String entry) {
         try (FileOutputStream f = new FileOutputStream(outputFile, true);
              PrintWriter pw = new PrintWriter(f)) {
 
             pw.println(entry);
             pw.flush();
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.toString());
             System.out.println("Could not find file");
         }
-    }
-
-    private void outputToFile(String action, BigDecimal endingBalance){
-        File outputFile = new File("Log.txt");
-        StringBuilder entry = new StringBuilder();
-
-        entry.append(new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new Date()));
-        entry.append(" ");
-        entry.append(action);
-        entry.append(" ");
-        entry.append(" $");
-        entry.append(endingBalance);
-
-        printToFile(outputFile, entry);
-
-
     }
 }

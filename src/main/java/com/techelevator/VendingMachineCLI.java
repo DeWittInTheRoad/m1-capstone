@@ -2,7 +2,6 @@ package com.techelevator;
 
 import com.techelevator.view.Menu;
 
-import java.io.IOException;
 
 public class VendingMachineCLI {
     private final VendingMachine vendingMachine = new VendingMachine();
@@ -26,7 +25,7 @@ public class VendingMachineCLI {
         this.menu = menu;
     }
 
-    private void run() throws IOException {
+    private void run(){
 
         vendingMachine.loadInventory();
 
@@ -42,7 +41,7 @@ public class VendingMachineCLI {
 
                     menuOptionPurchase:
                     while (true) {
-                        System.out.println("Current Money Provided: $" + vendingMachine.getBalance());
+                        System.out.println("Current Money Provided: " + vendingMachine.formatedBalanceToCurrency());
                         String purchaseMenuChoiceFromOption = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 
                         switch (purchaseMenuChoiceFromOption) {
@@ -57,7 +56,7 @@ public class VendingMachineCLI {
                             case PURCHASE_MENU_SELECT_PRODUCT:
                                 vendingMachine.displayItems();
 
-                                System.out.println("\nCurrent Money Provided: $" + vendingMachine.getBalance());
+                                System.out.println("\nCurrent Money Provided: " + vendingMachine.formatedBalanceToCurrency());
                                 System.out.println("\nPlease make selection or press X to return to previous menu.");
 
                                 menu.purchaseMenu(vendingMachine);
@@ -73,7 +72,7 @@ public class VendingMachineCLI {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         Menu menu = new Menu(System.in, System.out);
         VendingMachineCLI cli = new VendingMachineCLI(menu);
         cli.run();
