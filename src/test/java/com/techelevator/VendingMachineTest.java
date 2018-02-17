@@ -95,27 +95,4 @@ public class VendingMachineTest {
         Assert.assertEquals(0, vendingMachine.getItemsInTheMachine().get("A1").size());
     }
 
-    @Test
-    public void addToBalance() {
-    }
-
-    @Test
-    public void getInputFile() {
-    }
-
-    @Test
-    public void getInventory() {
-    }
-
-    @Test
-    public void getAllItems() {
-    }
-
-    @Test
-    public void loadInventory() {
-    }
-
-    @Test
-    public void createInventoryList() {
-    }
 }

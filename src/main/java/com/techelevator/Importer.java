@@ -39,7 +39,6 @@ public class Importer {
             String slot = inputFileItems[0];
             String name = inputFileItems[1];
             BigDecimal price = new BigDecimal(inputFileItems[2]);
-            System.out.println(slot);
             if (slot.startsWith("A")) {
                 Item item = new Chips(name, price);
                 itemLoader(itemList, slot, item);

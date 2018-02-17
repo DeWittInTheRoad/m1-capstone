@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import com.techelevator.change.Change;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
@@ -10,6 +12,7 @@ public class VendingMachine {
 
     private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
     private BigDecimal balance = new BigDecimal(0);
+    Logger logger = new Logger();
 
 
     public BigDecimal getBalance() {
@@ -26,8 +29,10 @@ public class VendingMachine {
                 System.out.println("Please Insert More Money.");
 
             else {
+
+                System.out.println("\n" + item.getConsumedMessage() + "\n");
+                logger.logPurchase(slot, item, getBalance());
                 balance = balance.subtract(item.getPrice());
-                System.out.println(item.getConsumedMessage());
                 itemListStockCount.remove(0);
             }
         }
@@ -40,6 +45,7 @@ public class VendingMachine {
     public void feedMoney(BigDecimal money) {
         balance = balance.add(money);
         System.out.println("Inserted $" + money.toString() + " dollars.");
+        logger.logFeed(money, getBalance());
 
     }
 
@@ -75,6 +81,16 @@ public class VendingMachine {
         Importer importer = new Importer();
         importer.loadInventory();
         itemsInTheMachine.putAll(importer.getItemsInTheMachine());
+    }
+
+    public void returnChange(){
+        Change change = new Change();
+        BigDecimal changeGiven = getBalance();
+
+        System.out.println("\n"+change.makeChange(getBalance()));
+
+        resetBalance();
+        logger.logChange(changeGiven, getBalance());
     }
 
 }
