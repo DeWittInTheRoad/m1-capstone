@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae62ae6e-7bec-431b-ad49-7779e25adcfe" name="Default" comment="Moved displayItems and purchaseItems menus out of main method and placed in menu class.">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+    <list default="true" id="ae62ae6e-7bec-431b-ad49-7779e25adcfe" name="Default" comment="Returns change when exiting program but not choosing finish transaction (instead of keeping change, to keep return customers)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Log.txt" afterPath="$PROJECT_DIR$/Log.txt" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/Importer.java" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/Importer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachine.java" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachine.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/view/Menu.java" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/view/Menu.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/techelevator/VendingMachineTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/techelevator/VendingMachineTest.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/Importer.class" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/Importer.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachine.class" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachine.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/VendingMachineCLI.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/view/Menu.class" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/view/Menu.class" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/techelevator/VendingMachineTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/techelevator/VendingMachineTest.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +20,8 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/view/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="87" column="72" lean-forward="true" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
+            <state relative-caret-position="969">
+              <caret line="66" column="30" lean-forward="true" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -68,21 +59,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VendingMachineCLI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VendingMachineCLI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="55" column="30" lean-forward="true" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
+            <state relative-caret-position="317">
+              <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1197#1198#0" expanded="true" />
-                <element signature="e#1229#1230#0" expanded="true" />
+                <element signature="e#1061#1062#0" expanded="true" />
+                <element signature="e#1093#1094#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Log.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Log.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Log.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -97,6 +88,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VendingMachine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="589">
+              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -159,10 +160,10 @@
         <option value="$PROJECT_DIR$/src/test/java/com/techelevator/ImporterTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/techelevator/VendingMachineTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/techelevator/Importer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/techelevator/view/Menu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachine.java" />
         <option value="$PROJECT_DIR$/Log.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/techelevator/view/Menu.java" />
       </list>
     </option>
   </component>
@@ -536,7 +537,7 @@
       <workItem from="1518820335290" duration="1760000" />
       <workItem from="1518822382216" duration="6000" />
       <workItem from="1518822431532" duration="795000" />
-      <workItem from="1518887616573" duration="2239000" />
+      <workItem from="1518887616573" duration="2906000" />
     </task>
     <task id="LOCAL-00001" summary="Cleaned up code, changed LOTS of statements to final">
       <created>1518663722565</created>
@@ -552,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518749656401</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Logger removed from menu class and moved into VendingMachine, which cleans up a lot of redundant checks&#10;VendingMachine given a return change method to get logger to interact there.&#10;&#10;Fixed bug where logger class improperly calculated starting balance after balance we subtracted in VendingMachine">
+      <created>1518890003508</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1518890003508</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -588,7 +596,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21095000" />
+    <option name="totallyTimeSpent" value="21762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -605,7 +613,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32343584" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32343584" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.118769884" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -637,7 +645,9 @@
     <MESSAGE value="Cleaned up code, changed LOTS of statements to final" />
     <MESSAGE value="Pulled CSV reading from vending machine class to separate importer class, added preliminary importer testing class." />
     <MESSAGE value="Moved displayItems and purchaseItems menus out of main method and placed in menu class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved displayItems and purchaseItems menus out of main method and placed in menu class." />
+    <MESSAGE value="Logger removed from menu class and moved into VendingMachine, which cleans up a lot of redundant checks&#10;VendingMachine given a return change method to get logger to interact there.&#10;&#10;Fixed bug where logger class improperly calculated starting balance after balance we subtracted in VendingMachine" />
+    <MESSAGE value="Returns change when exiting program but not choosing finish transaction (instead of keeping change, to keep return customers)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Returns change when exiting program but not choosing finish transaction (instead of keeping change, to keep return customers)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -728,8 +738,8 @@
           <caret line="61" column="70" lean-forward="false" selection-start-line="61" selection-start-column="70" selection-end-line="61" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1197#1198#0" expanded="true" />
-            <element signature="e#1229#1230#0" expanded="true" />
+            <element signature="e#1061#1062#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -808,8 +818,8 @@
           <caret line="61" column="70" lean-forward="true" selection-start-line="61" selection-start-column="70" selection-end-line="61" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1197#1198#0" expanded="true" />
-            <element signature="e#1229#1230#0" expanded="true" />
+            <element signature="e#1061#1062#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -917,8 +927,8 @@
           <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1197#1198#0" expanded="true" />
-            <element signature="e#1229#1230#0" expanded="true" />
+            <element signature="e#1061#1062#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -990,14 +1000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/Gum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/techelevator/VendingMachineTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
@@ -1026,30 +1028,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="55" column="30" lean-forward="true" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1197#1198#0" expanded="true" />
-            <element signature="e#1229#1230#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendingmachine.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/view/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="87" column="72" lean-forward="true" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
           <folding />
         </state>
       </provider>
@@ -1062,19 +1044,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="33" column="61" lean-forward="true" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Log.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/view/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="66" column="30" lean-forward="true" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/Gum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/techelevator/VendingMachineCLI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1061#1062#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

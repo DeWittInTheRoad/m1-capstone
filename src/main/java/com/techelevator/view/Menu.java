@@ -79,7 +79,7 @@ public class Menu {
 			System.out.println("Please insert $1, $2, $5, or $10 dollars or 0 to return to the previous menu.");
 			String userInput = in.nextLine();
 
-			if (userInput.matches("\\d+")) {
+			if (userInput.matches("\\d+")) {  //Checks to make sure it is an int
 				if (Integer.valueOf(userInput) == 1 || Integer.valueOf(userInput) == 2 || Integer.valueOf(userInput) == 5 || Integer.valueOf(userInput) == 10) {
 					vendingMachine.feedMoney(new BigDecimal(Integer.valueOf(userInput)));
 				} else if (Integer.valueOf(userInput) == 0) {

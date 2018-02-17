@@ -1,15 +1,11 @@
 package com.techelevator;
 
-import com.techelevator.change.Change;
 import com.techelevator.view.Menu;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.Scanner;
 
 public class VendingMachineCLI {
     private final VendingMachine vendingMachine = new VendingMachine();
-    private Logger logger = new Logger();
 
     private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -37,35 +33,42 @@ public class VendingMachineCLI {
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
-            if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-                vendingMachine.displayItems();
+            switch (choice) {
+                case MAIN_MENU_OPTION_DISPLAY_ITEMS:
+                    vendingMachine.displayItems();
+                    break;
 
-            } else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+                case MAIN_MENU_OPTION_PURCHASE:
 
-                while (true) {
-                    System.out.println("Current Money Provided: $" + vendingMachine.getBalance());
-                    String purchaseMenuChoiceFromOption = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+                    menuOptionPurchase:
+                    while (true) {
+                        System.out.println("Current Money Provided: $" + vendingMachine.getBalance());
+                        String purchaseMenuChoiceFromOption = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 
-                    if (purchaseMenuChoiceFromOption.equals(PURCHASE_MENU_FEED_MONEY)) {
+                        switch (purchaseMenuChoiceFromOption) {
+                            case PURCHASE_MENU_FEED_MONEY:
 
-                        menu.feedMoneyMenu(vendingMachine);
-                        break;
+                                menu.feedMoneyMenu(vendingMachine);
+                                break menuOptionPurchase;
 
-                    } else if (purchaseMenuChoiceFromOption.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
-                       vendingMachine.returnChange();
-                        break;
-                    } else if (purchaseMenuChoiceFromOption.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
-                        vendingMachine.displayItems();
+                            case PURCHASE_MENU_FINISH_TRANSACTION:
+                                vendingMachine.returnChange();
+                                break menuOptionPurchase;
+                            case PURCHASE_MENU_SELECT_PRODUCT:
+                                vendingMachine.displayItems();
 
-                        System.out.println("\nCurrent Money Provided: $" + vendingMachine.getBalance());
-                        System.out.println("\nPlease make selection or press X to return to previous menu.");
+                                System.out.println("\nCurrent Money Provided: $" + vendingMachine.getBalance());
+                                System.out.println("\nPlease make selection or press X to return to previous menu.");
 
-                        menu.purchaseMenu(vendingMachine);
+                                menu.purchaseMenu(vendingMachine);
+                                break;
+                        }
                     }
-                }
-            } else if ((choice.equals(MAIN_MENU_OPTION_EXIT))) {
-                System.out.println("Goodbye!");
-                System.exit(0);
+                    break;
+                case MAIN_MENU_OPTION_EXIT:
+                    System.out.println("Goodbye!");
+                    vendingMachine.returnChange();
+                    System.exit(0);
             }
         }
     }
