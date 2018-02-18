@@ -15,7 +15,7 @@ public class VendingMachine {
 
     private LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
     private final Logger logger = new Logger();
-    private SalesReport salesReport = new SalesReport();
+    private final SalesReport salesReport = new SalesReport();
     private BigDecimal balance = new BigDecimal(0);
 
     public BigDecimal getBalance() {
@@ -38,7 +38,7 @@ public class VendingMachine {
 
                 balance = balance.subtract(itemPrice);
 
-                logger.logPurchase(slot, item, startingBalance, balance);
+                logger.logPurchase(slot, item, startingBalance, balance); //Log and Sales Report
                 salesReport.updateBalance(itemPrice);
                 salesReport.updateInventory(item.getName());
                 itemListStockCount.remove(0);
@@ -93,7 +93,7 @@ public class VendingMachine {
     }
 
     public void returnChange() {
-        if (balance.doubleValue() > 0) {
+        if (balance.doubleValue() > 0) {  //Prevents message from displaying and logging if balance is 0
             Change change = new Change();
             BigDecimal changeGiven = getBalance();
 

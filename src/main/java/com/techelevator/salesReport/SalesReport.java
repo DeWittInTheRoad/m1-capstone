@@ -8,7 +8,7 @@ public class SalesReport {
 
     private static LinkedHashMap<String, Integer> salesReportMap = new LinkedHashMap<>();
     private static double totalSales;
-    private SalesReportReader salesReportReader = new SalesReportReader();
+    private final SalesReportReader salesReportReader = new SalesReportReader();
 
     public static LinkedHashMap<String, Integer> getSalesReportMap() {
         return salesReportMap;

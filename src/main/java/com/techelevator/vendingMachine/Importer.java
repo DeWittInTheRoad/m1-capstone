@@ -2,11 +2,13 @@ package com.techelevator.vendingMachine;
 
 import com.techelevator.items.*;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class Importer {
 
@@ -61,10 +63,10 @@ public class Importer {
     }
 
 
-    public LinkedHashMap<String,List<Item>> passImportMapToVendingMachine() {
+    public LinkedHashMap<String, List<Item>> passImportMapToVendingMachine() {
         String[] parsedFile = parseInputFileByLine(new File("vendingmachine.csv"));
-       createInventoryMap(parsedFile);
-       return itemsInTheMachine;
+        createInventoryMap(parsedFile);
+        return itemsInTheMachine;
     }
 
 
