@@ -32,7 +32,7 @@ public class VendingMachineCLI {
     private void run(){
 
         vendingMachine.loadInventory();
-        salesReport.parseSalesReport();
+        salesReport.setupSalesReport();
 
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
