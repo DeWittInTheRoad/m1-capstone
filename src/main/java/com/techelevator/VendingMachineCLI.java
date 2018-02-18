@@ -1,12 +1,14 @@
 package com.techelevator;
 
 import com.techelevator.salesReport.SalesReport;
+import com.techelevator.salesReport.SalesReportWriter;
 import com.techelevator.view.Menu;
 
 
 public class VendingMachineCLI {
     private final VendingMachine vendingMachine = new VendingMachine();
     private SalesReport salesReport = new SalesReport();
+    private SalesReportWriter srw = new SalesReportWriter();
 
     private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -55,7 +57,7 @@ public class VendingMachineCLI {
 
                             case PURCHASE_MENU_FINISH_TRANSACTION:
                                 vendingMachine.returnChange();
-                                salesReport.printToFile();
+                                srw.printToFile();
                                 break menuOptionPurchase;
 
                             case PURCHASE_MENU_SELECT_PRODUCT:
@@ -72,7 +74,7 @@ public class VendingMachineCLI {
                 case MAIN_MENU_OPTION_EXIT:
                     System.out.println("Goodbye!");
                     vendingMachine.returnChange();
-                    salesReport.printToFile();
+                    srw.printToFile();
                     System.exit(0);
             }
         }
