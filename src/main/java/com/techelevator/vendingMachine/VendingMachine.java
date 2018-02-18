@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.vendingMachine;
 
 import com.techelevator.change.Change;
 import com.techelevator.items.Item;
@@ -89,7 +89,7 @@ public class VendingMachine {
 
     public void loadInventory() {
         Importer importer = new Importer();
-        itemsInTheMachine = importer.importSetup();
+        itemsInTheMachine = importer.passImportMapToVendingMachine();
     }
 
     public void returnChange() {

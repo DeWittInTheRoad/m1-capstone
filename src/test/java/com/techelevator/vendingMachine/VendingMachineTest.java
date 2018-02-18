@@ -1,11 +1,9 @@
-package com.techelevator;
+package com.techelevator.vendingMachine;
 
+import com.techelevator.vendingMachine.VendingMachine;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.math.BigDecimal;
 
 
@@ -62,7 +60,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void try_to_buy_item_not_enough_money() throws FileNotFoundException{
+    public void try_to_buy_item_not_enough_money(){
 
         vendingMachine.feedMoney(BigDecimal.valueOf(0));
         String slot = "A1";

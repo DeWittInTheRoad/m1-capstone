@@ -1,5 +1,6 @@
-package com.techelevator;
+package com.techelevator.main;
 
+import com.techelevator.vendingMachine.VendingMachine;
 import com.techelevator.salesReport.SalesReport;
 import com.techelevator.salesReport.SalesReportWriter;
 import com.techelevator.view.Menu;
@@ -7,8 +8,8 @@ import com.techelevator.view.Menu;
 
 public class VendingMachineCLI {
     private final VendingMachine vendingMachine = new VendingMachine();
-    private SalesReport salesReport = new SalesReport();
-    private SalesReportWriter srw = new SalesReportWriter();
+    private final SalesReport salesReport = new SalesReport();
+    private final SalesReportWriter srw = new SalesReportWriter();
 
     private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";

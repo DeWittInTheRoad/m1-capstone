@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.vendingMachine;
 
 import com.techelevator.items.Item;
 

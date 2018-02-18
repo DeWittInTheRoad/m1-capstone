@@ -1,6 +1,6 @@
 package com.techelevator.view;
 
-import com.techelevator.VendingMachine;
+import com.techelevator.vendingMachine.VendingMachine;
 import com.techelevator.items.Item;
 
 import java.io.InputStream;

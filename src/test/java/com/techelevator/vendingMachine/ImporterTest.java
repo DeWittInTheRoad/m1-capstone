@@ -1,9 +1,7 @@
-package com.techelevator;
+package com.techelevator.vendingMachine;
 
+import com.techelevator.vendingMachine.Importer;
 import org.junit.Before;
-import org.junit.Test;
-
-import java.io.IOException;
 
 public class ImporterTest {
 

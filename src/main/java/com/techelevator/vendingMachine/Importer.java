@@ -1,17 +1,17 @@
-package com.techelevator;
+package com.techelevator.vendingMachine;
 
 import com.techelevator.items.*;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Importer {
 
+
+    private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
 
     public String[] parseInputFileByLine(File inputFile) {
         StringBuilder line = new StringBuilder();
@@ -28,8 +28,7 @@ public class Importer {
 
     }
 
-    private LinkedHashMap<String,List<Item>> createInventoryMap(String[] parsedFile) {
-        LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
+    private void createInventoryMap(String[] parsedFile) {
         for (String line : parsedFile) {
 
             String[] inputFileItems = line.split("[|]");
@@ -39,10 +38,7 @@ public class Importer {
             BigDecimal price = new BigDecimal(inputFileItems[2]);
             if (slot.startsWith("A")) {
                 Item item = new Chips(name, price);
-                for (int i = 0; i < 5; i++) {
-                    itemList.add(item);
-                    itemsInTheMachine.put(slot, itemList);
-                }
+                itemLoader(itemList, slot, item);
             } else if (slot.startsWith("B")) {
                 Item item = new Candy(name, price);
                 for (int i = 0; i < 5; i++) {
@@ -64,20 +60,20 @@ public class Importer {
             }
 
         }
-        return itemsInTheMachine;
     }
 
-//    private void itemLoader(List<Item> itemList, String slot, Item item) {
-//        for (int i = 0; i < 5; i++) {
-//            itemList.add(item);
-//            itemsInTheMachine.put(slot, itemList);
-//        }
-//    }
+    private void itemLoader(List<Item> itemList, String slot, Item item) {
+        for (int i = 0; i < 5; i++) {
+            itemList.add(item);
+            itemsInTheMachine.put(slot, itemList);
+        }
+    }
 
 
-    public LinkedHashMap<String,List<Item>> importSetup() {
+    public LinkedHashMap<String,List<Item>> passImportMapToVendingMachine() {
         String[] parsedFile = parseInputFileByLine(new File("vendingmachine.csv"));
-        return createInventoryMap(parsedFile);
+       createInventoryMap(parsedFile);
+       return itemsInTheMachine;
     }
 
 

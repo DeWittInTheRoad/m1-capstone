@@ -1,6 +1,6 @@
 package com.techelevator.salesReport;
 
-import com.techelevator.Importer;
+import com.techelevator.vendingMachine.Importer;
 
 import java.io.File;
 import java.util.LinkedHashMap;
