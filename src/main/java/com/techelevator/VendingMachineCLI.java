@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import com.techelevator.salesReport.SalesReport;
 import com.techelevator.view.Menu;
 
 
@@ -54,7 +55,9 @@ public class VendingMachineCLI {
 
                             case PURCHASE_MENU_FINISH_TRANSACTION:
                                 vendingMachine.returnChange();
+                                salesReport.printToFile();
                                 break menuOptionPurchase;
+
                             case PURCHASE_MENU_SELECT_PRODUCT:
                                 vendingMachine.displayItems();
 

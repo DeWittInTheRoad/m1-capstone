@@ -2,6 +2,7 @@ package com.techelevator;
 
 import com.techelevator.change.Change;
 import com.techelevator.items.Item;
+import com.techelevator.salesReport.SalesReport;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
