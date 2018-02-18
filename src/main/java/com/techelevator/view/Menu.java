@@ -75,7 +75,7 @@ public class Menu {
     public void feedMoneyMenu(VendingMachine vendingMachine) {
         while (true) {
             System.out.println("");
-            System.out.println("Current Money Provided: " + vendingMachine.formatedBalanceToCurrency());
+            System.out.println("Current Money Provided: " + vendingMachine.formattedBalanceToCurrency());
             System.out.println("Please insert $1, $2, $5, or $10 dollars or 0 to return to the previous menu.");
             String userInput = in.nextLine();
 

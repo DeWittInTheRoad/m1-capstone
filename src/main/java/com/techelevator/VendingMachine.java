@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class VendingMachine {
 
-    private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
+    private LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
     private final Logger logger = new Logger();
     private SalesReport salesReport = new SalesReport();
     private BigDecimal balance = new BigDecimal(0);
@@ -88,8 +88,7 @@ public class VendingMachine {
 
     public void loadInventory() {
         Importer importer = new Importer();
-        importer.importSetup();
-        itemsInTheMachine.putAll(importer.getItemsInTheMachine());
+        itemsInTheMachine = importer.importSetup();
     }
 
     public void returnChange() {
@@ -101,12 +100,10 @@ public class VendingMachine {
 
             resetBalance();
             logger.logChange(changeGiven, getBalance());
-        } else {
-            logger.logChange(getBalance(), getBalance()); //Still log 0.00, 0.00  Do I want to keep this?
         }
     }
 
-    public String formatedBalanceToCurrency() {
+    public String formattedBalanceToCurrency() {
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
         return numberFormat.format(balance.doubleValue());
     }

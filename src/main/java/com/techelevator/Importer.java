@@ -11,16 +11,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Importer {
-    private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
-    private String[] csvItems;
 
-    public LinkedHashMap<String, List<Item>> getItemsInTheMachine() {
-        return itemsInTheMachine;
-    }
 
-    public void readCSVFile() {
+    public String[] parseInputFileByLine(File inputFile) {
         StringBuilder line = new StringBuilder();
-        File inputFile = new File("vendingmachine.csv");
         try (Scanner in = new Scanner(inputFile)) {
             while (in.hasNextLine()) {
                 line.append(in.nextLine()).append("\n");
@@ -30,13 +24,13 @@ public class Importer {
             System.out.println(e.toString());
             System.out.println("Could not " + inputFile + " file");
         }
-        csvItems = line.toString().split("[\n]");
+        return line.toString().split("[\n]");
 
     }
 
-    public void createMap() {
-
-        for (String line : csvItems) {
+    private LinkedHashMap<String,List<Item>> createInventoryMap(String[] parsedFile) {
+        LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
+        for (String line : parsedFile) {
 
             String[] inputFileItems = line.split("[|]");
             List<Item> itemList = new ArrayList<>();
@@ -45,32 +39,45 @@ public class Importer {
             BigDecimal price = new BigDecimal(inputFileItems[2]);
             if (slot.startsWith("A")) {
                 Item item = new Chips(name, price);
-                itemLoader(itemList, slot, item);
+                for (int i = 0; i < 5; i++) {
+                    itemList.add(item);
+                    itemsInTheMachine.put(slot, itemList);
+                }
             } else if (slot.startsWith("B")) {
                 Item item = new Candy(name, price);
-                itemLoader(itemList, slot, item);
+                for (int i = 0; i < 5; i++) {
+                    itemList.add(item);
+                    itemsInTheMachine.put(slot, itemList);
+                }
             } else if (slot.startsWith("C")) {
                 Item item = new Beverage(name, price);
-                itemLoader(itemList, slot, item);
+                for (int i = 0; i < 5; i++) {
+                    itemList.add(item);
+                    itemsInTheMachine.put(slot, itemList);
+                }
             } else if (slot.startsWith("D")) {
                 Item item = new Gum(name, price);
-                itemLoader(itemList, slot, item);
+                for (int i = 0; i < 5; i++) {
+                    itemList.add(item);
+                    itemsInTheMachine.put(slot, itemList);
+                }
             }
 
         }
+        return itemsInTheMachine;
     }
 
-    private void itemLoader(List<Item> itemList, String slot, Item item) {
-        for (int i = 0; i < 5; i++) {
-            itemList.add(item);
-            itemsInTheMachine.put(slot, itemList);
-        }
-    }
+//    private void itemLoader(List<Item> itemList, String slot, Item item) {
+//        for (int i = 0; i < 5; i++) {
+//            itemList.add(item);
+//            itemsInTheMachine.put(slot, itemList);
+//        }
+//    }
 
 
-    public void importSetup() {
-        readCSVFile();
-        createMap();
+    public LinkedHashMap<String,List<Item>> importSetup() {
+        String[] parsedFile = parseInputFileByLine(new File("vendingmachine.csv"));
+        return createInventoryMap(parsedFile);
     }
 
 

@@ -11,17 +11,16 @@ public class ImporterTest {
     String[] csvItems;
 
     @Before
-    public void setup() throws IOException {
+    public void setup() {
         importer = new Importer();
     }
 
-        @Test
-    public void read_csv_file() throws IOException{
-            importer.readCSVFile();
-            importer.createMap();
-            importer.importSetup();
-
-            System.out.println(csvItems);
-            System.out.println(importer.getItemsInTheMachine());
-        }
+//        @Test
+//    public void read_csv_file() throws IOException{///            importer.parseInputFileByLine();
+//            importer.createInventoryMap();
+//            importer.importSetup();
+//
+//            System.out.println(csvItems);
+//            System.out.println(importer.getItemsInTheMachine());
+//        }
     }

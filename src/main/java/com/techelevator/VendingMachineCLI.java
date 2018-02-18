@@ -5,7 +5,7 @@ import com.techelevator.view.Menu;
 
 public class VendingMachineCLI {
     private final VendingMachine vendingMachine = new VendingMachine();
-    SalesReport salesReport = new SalesReport();
+    private SalesReport salesReport = new SalesReport();
 
     private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -29,8 +29,7 @@ public class VendingMachineCLI {
     private void run(){
 
         vendingMachine.loadInventory();
-        salesReport.readSalesReport();
-        salesReport.createMap();
+        salesReport.parseSalesReport();
 
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -44,7 +43,7 @@ public class VendingMachineCLI {
 
                     menuOptionPurchase:
                     while (true) {
-                        System.out.println("Current Money Provided: " + vendingMachine.formatedBalanceToCurrency());
+                        System.out.println("Current Money Provided: " + vendingMachine.formattedBalanceToCurrency());
                         String purchaseMenuChoiceFromOption = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 
                         switch (purchaseMenuChoiceFromOption) {
@@ -59,7 +58,7 @@ public class VendingMachineCLI {
                             case PURCHASE_MENU_SELECT_PRODUCT:
                                 vendingMachine.displayItems();
 
-                                System.out.println("\nCurrent Money Provided: " + vendingMachine.formatedBalanceToCurrency());
+                                System.out.println("\nCurrent Money Provided: " + vendingMachine.formattedBalanceToCurrency());
                                 System.out.println("\nPlease make selection or press X to return to previous menu.");
 
                                 menu.purchaseMenu(vendingMachine);

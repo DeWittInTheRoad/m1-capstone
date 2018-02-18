@@ -9,7 +9,6 @@ import java.text.NumberFormat;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Scanner;
 
 public class SalesReport {
 
@@ -17,26 +16,17 @@ public class SalesReport {
     private static double totalSales;
     private final File inputFile = new File("SalesReport.txt");
     private final File outputFile = new File("SalesReport.txt");
-    private String[] salesReportItems;
 
-    public void readSalesReport() {
-        StringBuilder line = new StringBuilder();
 
-        try (Scanner in = new Scanner(inputFile)) {
-            while (in.hasNextLine()) {
-                line.append(in.nextLine()).append("\n");
-            }
 
-        } catch (IOException e) {
-            System.out.println(e.toString());
-            System.out.println("Could not " + inputFile + " file");
-        }
-        salesReportItems = line.toString().split("[\n]");
+    public void parseSalesReport(){
+        Importer importer = new Importer();
+        String[] salesReportItems = importer.parseInputFileByLine(inputFile);
+        createMap(salesReportItems);
+        createTotalSalesVariable(salesReportItems);
     }
 
-
-    public void createMap() {
-
+    private void createMap(String[] salesReportItems) {
         for (String line : salesReportItems) {
             if (!line.startsWith("*") && (!line.isEmpty())) {
                 String[] inputFileItems = line.split("[|]");
@@ -45,6 +35,12 @@ public class SalesReport {
 
                 salesReportMap.put(name, inventoryCount);
             }
+
+        }
+    }
+
+    private void createTotalSalesVariable(String[] salesReportItems) {
+        for (String line : salesReportItems) {
             if (line.startsWith("*")) {
                 String[] totalSalesGetter = line.split("[$]");
                 totalSales = Double.parseDouble(totalSalesGetter[1].trim());
