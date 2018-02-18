@@ -41,22 +41,13 @@ public class Importer {
                 itemLoader(itemList, slot, item);
             } else if (slot.startsWith("B")) {
                 Item item = new Candy(name, price);
-                for (int i = 0; i < 5; i++) {
-                    itemList.add(item);
-                    itemsInTheMachine.put(slot, itemList);
-                }
+                itemLoader(itemList, slot, item);
             } else if (slot.startsWith("C")) {
                 Item item = new Beverage(name, price);
-                for (int i = 0; i < 5; i++) {
-                    itemList.add(item);
-                    itemsInTheMachine.put(slot, itemList);
-                }
+                itemLoader(itemList, slot, item);
             } else if (slot.startsWith("D")) {
                 Item item = new Gum(name, price);
-                for (int i = 0; i < 5; i++) {
-                    itemList.add(item);
-                    itemsInTheMachine.put(slot, itemList);
-                }
+                itemLoader(itemList, slot, item);
             }
 
         }

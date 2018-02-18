@@ -9,7 +9,7 @@ public class SalesReportReader {
 
 
     private final File salesReportFile = new File("SalesReport.txt");
-    private LinkedHashMap<String, Integer> salesReportMap = new LinkedHashMap<>();
+    private final LinkedHashMap<String, Integer> salesReportMap = new LinkedHashMap<>();
     private double totalSales;
 
     public LinkedHashMap<String, Integer> getSalesReportMap() {
