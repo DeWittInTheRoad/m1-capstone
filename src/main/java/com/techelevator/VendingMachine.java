@@ -14,6 +14,7 @@ public class VendingMachine {
 
     private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
     private final Logger logger = new Logger();
+    private SalesReport salesReport = new SalesReport();
     private BigDecimal balance = new BigDecimal(0);
 
     public BigDecimal getBalance() {
@@ -26,16 +27,19 @@ public class VendingMachine {
             System.out.println("SOLD OUT");
         } else {
             Item item = itemListStockCount.get(0);
-            if (balance.doubleValue() < item.getPrice().doubleValue())
+            BigDecimal itemPrice = item.getPrice();
+            if (balance.doubleValue() < itemPrice.doubleValue())
                 System.out.println("Please Insert More Money.");
 
             else {
                 System.out.println("\nConsuming " + item.getName() + "..." + "\n" + item.getConsumedMessage() + "\n");
                 BigDecimal startingBalance = balance;
-                balance = balance.subtract(item.getPrice());
+
+                balance = balance.subtract(itemPrice);
 
                 logger.logPurchase(slot, item, startingBalance, balance);
-
+                salesReport.updateBalance(itemPrice);
+                salesReport.updateInventory(item.getName());
                 itemListStockCount.remove(0);
             }
         }
@@ -66,9 +70,10 @@ public class VendingMachine {
                 System.out.println(String.format("%-5s%-19s%10s%10s", itemSlot, itemName, itemPrice, itemCount));
             } else {
                 String itemSlot = entry.getKey();
-                System.out.println(String.format("%-5s%-19s", itemSlot, "SOLD OUT"));
+                System.out.println(String.format("%-15s%7s", itemSlot, "SOLD OUT")); //Prevents Array Out Of Bounds error
             }
         }
+        System.out.println("---------------------------------------------");
     }
 
     public Map<String, List<Item>> getItemsInTheMachine() {
@@ -83,7 +88,7 @@ public class VendingMachine {
 
     public void loadInventory() {
         Importer importer = new Importer();
-        importer.loadInventory();
+        importer.importSetup();
         itemsInTheMachine.putAll(importer.getItemsInTheMachine());
     }
 
@@ -97,7 +102,7 @@ public class VendingMachine {
             resetBalance();
             logger.logChange(changeGiven, getBalance());
         } else {
-            logger.logChange(getBalance(), getBalance()); //Still log 0.00, 0.00
+            logger.logChange(getBalance(), getBalance()); //Still log 0.00, 0.00  Do I want to keep this?
         }
     }
 

@@ -14,7 +14,7 @@ public class VendingMachineTest {
     private VendingMachine vendingMachine;
 
     @Before
-    public void setup() throws IOException{
+    public void setup(){
         vendingMachine = new VendingMachine();
         vendingMachine.loadInventory();
     }
@@ -72,7 +72,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void buyItem() throws IOException {
+    public void buyItem(){
         vendingMachine.loadInventory();
         vendingMachine.feedMoney(BigDecimal.valueOf(10));
         String slot = "A1";
@@ -82,7 +82,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void buy_sold_out() throws IOException {
+    public void buy_sold_out(){
         vendingMachine.loadInventory();
         vendingMachine.feedMoney(BigDecimal.valueOf(100));
         String slot = "A1";

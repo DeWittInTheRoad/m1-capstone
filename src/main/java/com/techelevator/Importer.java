@@ -1,34 +1,32 @@
 package com.techelevator;
 
 import com.techelevator.items.*;
+
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.*;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class Importer {
-
     private final LinkedHashMap<String, List<Item>> itemsInTheMachine = new LinkedHashMap<>();
     private String[] csvItems;
-
-
 
     public LinkedHashMap<String, List<Item>> getItemsInTheMachine() {
         return itemsInTheMachine;
     }
 
-
-    public void readCSVFile(){
+    public void readCSVFile() {
         StringBuilder line = new StringBuilder();
         File inputFile = new File("vendingmachine.csv");
-
         try (Scanner in = new Scanner(inputFile)) {
             while (in.hasNextLine()) {
                 line.append(in.nextLine()).append("\n");
             }
 
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.toString());
             System.out.println("Could not " + inputFile + " file");
         }
@@ -70,8 +68,7 @@ public class Importer {
     }
 
 
-
-    public void loadInventory(){
+    public void importSetup() {
         readCSVFile();
         createMap();
     }

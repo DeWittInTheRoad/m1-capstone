@@ -1,12 +1,9 @@
 package com.techelevator;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 public class ImporterTest {
 
@@ -22,7 +19,7 @@ public class ImporterTest {
     public void read_csv_file() throws IOException{
             importer.readCSVFile();
             importer.createMap();
-            importer.loadInventory();
+            importer.importSetup();
 
             System.out.println(csvItems);
             System.out.println(importer.getItemsInTheMachine());

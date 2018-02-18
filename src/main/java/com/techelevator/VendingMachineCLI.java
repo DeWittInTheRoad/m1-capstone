@@ -5,6 +5,7 @@ import com.techelevator.view.Menu;
 
 public class VendingMachineCLI {
     private final VendingMachine vendingMachine = new VendingMachine();
+    SalesReport salesReport = new SalesReport();
 
     private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -28,6 +29,8 @@ public class VendingMachineCLI {
     private void run(){
 
         vendingMachine.loadInventory();
+        salesReport.readSalesReport();
+        salesReport.createMap();
 
         while (true) {
             String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -67,6 +70,7 @@ public class VendingMachineCLI {
                 case MAIN_MENU_OPTION_EXIT:
                     System.out.println("Goodbye!");
                     vendingMachine.returnChange();
+                    salesReport.printToFile();
                     System.exit(0);
             }
         }
@@ -76,6 +80,7 @@ public class VendingMachineCLI {
         Menu menu = new Menu(System.in, System.out);
         VendingMachineCLI cli = new VendingMachineCLI(menu);
         cli.run();
+
     }
 
 
